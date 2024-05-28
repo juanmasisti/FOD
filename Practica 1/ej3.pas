@@ -10,7 +10,7 @@ ii. Listar en pantalla los empleados de a uno por línea.
 iii. Listar en pantalla empleados mayores de 70 años, próximos a jubilarse.
 NOTA: El nombre del archivo a crear o utilizar debe ser proporcionado por el usuario.}
 
-program ej2;
+program ej3;
 
 Uses 
 crt;
@@ -64,13 +64,12 @@ Begin
   writeln('Ingresar el nombre o apellido del Empleado a mostrar: ');
   readln(str);
   Reset(arcL);
-  read(arcL, r);
-  While (str <> r.apellido ) And (str <> r.nombre) Do
-    Begin
-      read(arcL, r);
-    End;
-  writeln('Num: ', r.numEmp, ' Apellido: ', r.apellido, ' Nombre: ', r.nombre,
-          ' Edad: ', r.edad, ' DNI: ', r.DNI);
+  while not eof(arcL) do begin
+    read(arcL, r);
+    if (r.apellido = str) or (r.nombre = str) then
+      writeln('Num: ', r.numEmp, ' Apellido: ', r.apellido, ' Nombre: ', r.
+              nombre, ' Edad: ', r.edad, ' DNI: ', r.DNI);
+  end;
   writeln('---Presionar Enter para volver---');
   readln();
   close(arcL);

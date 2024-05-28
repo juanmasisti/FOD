@@ -17,7 +17,7 @@ Type
   End;
   archivos = file Of celulares;
 
-Procedure leerRegsitro(Var r: celulares);
+Procedure leerRegistro(Var r: celulares);
 Begin
   writeln('Ingresar el codigo del celular: ');
   readln(r.codigo);

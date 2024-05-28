@@ -1,0 +1,56 @@
+a. PosicionarYLeerNodo()
+Función: PosicionarYLeerNodo se encarga de posicionarse en la ubicación indicada por NRR en el archivo que contiene los nodos del árbol B, leer el nodo desde el archivo y cargarlo en la estructura en memoria.
+
+Parámetros:
+
+A: referencia al archivo o estructura de datos donde están almacenados los nodos.
+nodo: referencia a la estructura de datos que almacenará el nodo leído.
+NRR: valor que indica la posición del nodo en el archivo (Número de Registro Relativo).
+Implementación en Pascal:
+
+pascal
+Copiar código
+procedure PosicionarYLeerNodo(var A: file of TArbolBNode; var nodo: TArbolBNode; NRR: integer);
+begin
+  seek(A, NRR);
+  read(A, nodo);
+end;
+En esta implementación:
+
+A se pasa por referencia para que cualquier cambio en el archivo sea reflejado fuera del procedimiento.
+nodo se pasa por referencia para que el nodo leído sea accesible fuera del procedimiento.
+NRR se pasa por valor porque es un número entero que indica la posición del nodo a leer.
+b. claveEncontrada()
+Función: claveEncontrada busca una clave dentro del nodo. Si la clave se encuentra, establece el parámetro clave_encontrada en true y devuelve la posición de la clave dentro del nodo.
+
+Parámetros:
+
+A: nodo del árbol B (referencia).
+clave: clave a buscar (valor).
+pos: posición de la clave en el nodo si se encuentra (referencia).
+clave_encontrada: bandera que indica si la clave fue encontrada (referencia).
+Implementación en Pascal:
+
+pascal
+Copiar código
+procedure claveEncontrada(var A: TArbolBNode; clave: integer; var pos: integer; var clave_encontrada: boolean);
+var
+  i: integer;
+begin
+  clave_encontrada := false;
+  for i := 1 to A.numKeys do
+  begin
+    if A.keys[i].DNI = clave then
+    begin
+      pos := i;
+      clave_encontrada := true;
+      exit;
+    end
+    else if A.keys[i].DNI > clave then
+    begin
+      pos := i;
+      exit;
+    end;
+  end;
+  pos := A.numKeys + 1;
+end;

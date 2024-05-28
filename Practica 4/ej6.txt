@@ -1,0 +1,44 @@
+El minimo de elementos del arbol es (M/2) - 1 -> M = 4 -> (4/2) - 1 = 1
+
++5
+-Se coloca en el nodo 0 el elemento
+2: [0 (66) 1]
+0: [(5) (22) (32) (50)] 1: [(77) (79) (92)]
+-Existe un overflow en el nodo 0
+-Se crea un nuevo nodo (3)
+-Se elige como padre el elemento 32
+2: [0 (32) 3 (66) 1]
+0: [(5) (22)] 3: [(50)] 1: [(77) (79) (92)]
+
++9
+-Se coloca en el nodo 0 el elemento
+2: [0 (32) 3 (66) 1]
+0: [(5) (9) (22)] 3: [(50)] 1: [(77) (79) (92)]
+
++80
+-Se coloca en el nodo 1 el elemento
+2: [0 (32) 3 (66) 1]
+0: [(5) (9) (22)] 3: [(50)] 1: [(77) (79) (80) (92)]
+-Existe un overflow en el nodo 1
+-Se crea un nuevo nodo (4)
+-Se elige como padre el elemento 80
+2: [0 (32) 3 (66) 1 (80) 4]
+0: [(5) (9) (22)] 3: [(50)] 1: [(77) (79)] 4: [(92)]
+
++51
+-Se coloca en el nodo 3 el elemento
+2: [0 (32) 3 (66) 1 (80) 4]
+0: [(5) (9) (22)] 3: [(50) (51)] 1: [(77) (79)] 4: [(92)]
+
+-50
+-Se elimina del nodo 3 el elemento
+2: [0 (32) 3 (66) 1 (80) 4]
+0: [(5) (9) (22)] 3: [(51)] 1: [(77) (79)] 4: [(92)]
+
+-92
+-Se elimina del nodo 4 el elemento
+2: [0 (32) 3 (66) 1 (79) 4]
+0: [(5) (9) (22)] 3: [(51)] 1: [(77)] 4: [(80)]
+-Existe un underflow en el nodo 4
+-Se puede distribuir con el nodo derecho 1
+-Se elige como padre el elemento 79

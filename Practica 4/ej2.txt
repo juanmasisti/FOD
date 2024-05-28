@@ -1,0 +1,12 @@
+Organizacion de Datos:
+
+Constituyen una mejora sobre los árboles B, pues conservan la propiedad de acceso aleatorio rápido y permiten además un recorrido secuencial rápido. 
+Consiste en un conjunto de grupos de registros ordenados por clave en forma secuencial, junto con un conjunto de índices, que proporciona acceso rápido a los registros.
+Conjunto índice: Proporciona acceso indizado a los registros. Todas las claves se encuentran en las hojas, duplicándose en la raíz y nodos interiores aquellas que resulten necesarias para definir los caminos de búsqueda.
+Conjunto secuencia: Contiene todos los registros del archivo. Las hojas se vinculan para facilitar el recorrido secuencial rápido. Cuando se lee en orden lógico, lista todos los registros por el orden de la clave.
+
+2 a. Accede a traves del conjunto índice.
+
+b. Accede a traves del conjunto secuencia.
+
+c. Puede conservar la propiedad de acceso aleatorio rapido y permite ademas un recorrido secuencial rapido.

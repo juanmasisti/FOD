@@ -1,0 +1,52 @@
+a. Organizacion de Datos:
+
+Un arbol B es un arbol multicamino con una construccion especial de arboles que permite mantenerlos balanceados a bajo costo.
+Propiedad de Arboles Orden M:
++ Cada nodo pued tener como max M descendientes y M-1 elementos.
++ La raiz tiene 0 o al menos dos descendientes.
++ Un nodo con X descendientes contiene X-1 elementos.
++ Todos los nodos menos la raiz tienen como minimo [M/2] - 1 elementos y como maximo M - 1.
++ Todas las hojas estan al mismo nivel.
+
+c. Impacto sobre el valor de M al organizar el archivo como un árbol B
+Organizar el archivo como un árbol B de orden 8 significa que cada nodo puede tener hasta 7 claves y 8 hijos. 
+Esto proporciona un equilibrio entre el número de accesos a disco y la cantidad de datos que pueden ser almacenados en cada nodo, 
+permitiendo búsquedas, inserciones y eliminaciones eficientes.
+
+d. Los datos que pueden elegirse como clave de identificacion son el DNI y el Legajo.
+Se pueden usar estas dos ya que no existes dos DNI o Legajos iguales entre los alumnos.
+
+e. Proceso de búsqueda de un alumno y número de lecturas de nodos
+Para buscar un alumno en el árbol B usando el DNI:
+
+Comenzamos en la raíz del árbol.
+Comparamos el DNI buscado con las claves en el nodo actual.
+Si encontramos el DNI, terminamos la búsqueda.
+Si no encontramos el DNI y el nodo actual no es una hoja, seguimos el puntero al hijo correspondiente.
+Repetimos el proceso hasta encontrar el DNI o llegar a un nodo hoja.
+Mejor caso: El DNI está en la raíz. Se necesita solo 1 lectura de nodo.
+Peor caso: El DNI está en un nodo hoja en el nivel más bajo. El número máximo de lecturas de nodos es igual a la altura del árbol. La altura 
+ℎ
+h de un árbol B de orden 
+𝑀
+M y 
+𝑛
+n claves es aproximadamente 
+log
+⁡
+𝑀
+(
+𝑛
+)
+log 
+M
+​
+ (n).
+f. Búsqueda por un criterio diferente
+Si deseamos buscar un alumno por un criterio diferente (por ejemplo, el nombre), y el árbol está organizado por DNI, no podemos utilizar el índice de forma eficiente.
+
+Peor caso: Tendríamos que hacer una búsqueda secuencial en todos los registros de todos los nodos, lo que requeriría leer todos los nodos del árbol. Si hay 
+𝑁
+N nodos, se necesitarían 
+𝑁
+N lecturas en el peor caso.

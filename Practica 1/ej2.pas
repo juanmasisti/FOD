@@ -34,6 +34,7 @@ begin
     promCant:= promCant + 1;
     promSum:= promSum + num;
   end;
+  Close(arcL);
   writeln('Cantidad de numeros menores a 1500: ', cantNum);
   writeln('Promedio de numeros: ', promSum/promCant:2:0);
 end.
