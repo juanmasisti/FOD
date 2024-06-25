@@ -1,0 +1,78 @@
+1.
+
+Caja negra que a partir de una clave se obtiene la dirección donde debe estar el registro.
+No hay relación aparente entre clave y dirección. Dos claves distintas pueden transformarse en iguales direcciones (colisiones)
+
+Una función de hash o dispersión es una función que transforma un valor, que representa una llave primaria de un registro, 
+en otro valor dentro de un determinado rango, que se utiliza como dirección física de acceso para insertar un registro en un archivo de datos.
+
+Tres funciones de dispersion:
+
+1. Sumo digitos de la clave.
+2. F(x) (x mod [x/2]) + x/2 --> Al resto de la clave divido la mitad de la clave le sumo la mitad de la clave.
+2. Multiplico primer y ultimo digito y lo divido por el del medio. 
+
+-------------------------------------------------------------------
+1. Módulo tamaño de la memoria: esta función divide la clave por el tamaño del
+espacio de direcciones disponible, y luego utiliza el resto resultante de dicha 
+división como dirección física para la clave en cuestión. Suele ocurrir, en casi la
+mayoría de las funciones de dispersión, que generalmente se utiliza el resto en
+alguna parte para producir una dirección en el intervalo de direcciones
+correspondiente. Para obtener mejores resultados, es conveniente que la división
+se realice con un número primo, ya que genera mejores resultados.
+
+2. Centros cuadrados: esta función implica elevar la clave al cuadrado y luego
+extraer los dígitos centrales para ser ajustados al espacio de memoria disponible
+mediante la división y el uso del resto como dirección física en donde se
+almacenará la clave correspondiente. Es importante aclarar que el método original
+de centros cuadrados, utiliza solamente los dígitos centrales como dirección física
+donde será almacenada la clave, es decir, que no aplica la división, ni la utilización
+del resto. Sin embargo, cuando se utiliza un espacio de direcciones pequeño se
+debe aplicar tal división para generar una dirección válida.
+
+3. Transformación de la base: esta función convierte la clave a alguna otra base
+numérica que no sea con la que se está trabajando, luego se debe dividir la clave,
+ya transformada, por el total de direcciones disponibles y utilizar el resto como
+dirección física para almacenarla.
+------------------------------------------------------------------------------------
+
+3. Explique los conceptos de: sinónimo, colisión y registro en saturación. 
+
+Sinonimo: Las claves que pertenecen a un mismo registro son sinonimos.
+
+Colision: situación en la que un registro es asignado, por función de dispersión, a una dirección que ya posee uno o más registros.
+
+Registro en saturación: Situacion en la que un registro es direccionado a un nodo que no dispone de capacidad para almacenarlo.
+
+4. ¿Qué alternativas existen para reducir el número de colisiones (y por ende de
+desbordes) en un archivo organizado mediante la técnica de hashing?
+
+Funciones Hash de Alta Calidad:
+Utilizar funciones hash que distribuyan las claves uniformemente a lo largo del espacio de direcciones. Las funciones hash criptográficas como SHA-256 o MD5 son ejemplos, aunque pueden ser demasiado complejas para ciertas aplicaciones.
+Función Hash Universal: Se trata de elegir una función hash de una familia de funciones hash con buenas propiedades estadísticas para reducir colisiones.
+2. Redimensionamiento de la Tabla Hash
+Tabla Hash Dinámica:
+Redimensionar la tabla hash cuando se alcanza un cierto umbral de carga (factor de carga alto). Al aumentar el tamaño de la tabla y recalcular las ubicaciones de los elementos, se reducen las colisiones.
+Factor de Carga: Mantener un factor de carga bajo (número de elementos/ tamaño de la tabla) puede reducir colisiones. Un factor de carga típico puede ser 0.75.
+3. Técnicas de Resolución de Colisiones
+Encadenamiento (Chaining):
+
+Cada posición de la tabla hash apunta a una lista enlazada (o cualquier otra estructura de datos) de todas las claves que hash a ese índice. En caso de colisión, la clave se inserta en la lista correspondiente.
+Ventajas: Fácil de implementar y manejar colisiones eficientemente.
+Desventajas: Puede llevar a listas muy largas si las colisiones son frecuentes, impactando el rendimiento.
+
+5. Explique brevemente qué es la densidad de empaquetamiento. 
+
+Se define la Densidad de Empaquetamiento (DE) como la relación entre el espacio disponible para el archivo de datos y la cantidad de registros que integran dicho archivo.
+
+Cuanto mayor sea la DE, mayor será la posibilidad de colisiones, dado que en ese caso se dispone de menos espacio para esparcir registros.
+Por el contrario, si la DE se mantiene baja, se dispone de mayor espacio para esparcir registros y, por ende, disminuye la probabilidad de colisiones.
+Por otra parte, cuando la DE se mantiene baja, se desperdicia espacio en el disco, dado que se utiliza menor espacio que el reservado, generando fragmentación.
+
+DE= numero de registros / cantidad de espacio total (capacidad de nodo x nro de nodos)
+
+6. Explique cómo funcionan las siguientes técnicas de resolución de colisiones:
+● Saturación progresiva: Cuando se completa el nodo, se busca el próximo hasta encontrar uno libre.
+● Saturación progresiva encadenada: Similar a saturación progresiva, pero los reg. de saturación se encadenan y “no ocupan” necesariamente posiciones contiguas
+● Saturación progresiva encadenada con área de desborde separada: Las claves que general Overflow van a nodos especiales.
+● Dispersión doble: Se resuelven overflows aplicando una segunda función de dispersion a la clave para producir un desplazamiento. La segunda funcion se suma a la primera (dirección original) tantas veces como sea necesario hasta encontrar una dirección con espacio. 
