@@ -40,7 +40,7 @@ type
     vector_detalle = array [1..n] of detalle; // vector de archivos detalle
     reg_detalle = array [1..n] of venta; // vector de registros de detalle
 
-procedure leer (var archivo: detalle; var dato: detalle);
+procedure leer (var archivo: detalle; var dato: venta);
 begin
     if (not eof(archivo)) then 
         read(archivo, dato)
@@ -48,7 +48,7 @@ begin
         dato.codigo := valoralto;
 end;
 
-procedure minimo(var vectorReg: reg_detalle; var min: producto; var deta: vector_detalle);
+procedure minimo(var vectorReg: reg_detalle; var min: venta; var deta: vector_detalle);
 var
     i,pos_min: integer;
 begin
@@ -89,10 +89,10 @@ begin
             cantVendida += min.cantidad;
             minimo(vectorReg, min, deta);
         end;
-        regm.stock -= cantVendida; // actualizo el stock
         read(maestro, regm); // leo el registro del maestro
         while (regm.codigo <> codigoActual) do  // busco el registro que coincida con el codigo actual
             read(maestro, regm);
+        regm.stock -= cantVendida; // actualizo el stock
         montoVendido += cant_vendida * regm.precio;        
         seek(maestro, filepos(maestro) - 1); // retrocedo el puntero
         writeln(maestro, regm);
