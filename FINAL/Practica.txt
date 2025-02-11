@@ -1,0 +1,31 @@
+PARCIAL A VER QUE TAL
+1)f bien
+2)a bien
+3)a bien
+4)f bien
+5)e bien
+6)c bien
+7)a y c es decir e bien.
+8)b bien
+9)f bien
+10)d bien
+11)b mal
+12)d bien
+13)b bien
+14)a bien
+15)d bien
+16)f ----> no existe arbol b de prefijos simples una verga esto.
+17)b y c --> f bien
+18)e --> la respuesta que esta en el moodle esta MAL
+19)f bien
+20)g bien
+21)d --> ni idea porque esta mal
+22)f bien
+23)f bien a ver --> si se cambia solo la funcion de dispersion --> no soluciona nada deberia ser se aumenta el tamaño del archivo y se cambia la funcion de dispersion
+24)f bien
+25)f bien
+26)g bien
+27)c bien
+28)b bien
+29)a y d --> e bien
+30)b bien
